@@ -1,0 +1,19 @@
+#loginForm {
+  width: 30%;
+  margin: auto;
+  margin-top: 10px;
+}
+#loginForm > input {
+  width: 100%;
+  margin-top: 20px;
+  height: 40px;
+  border: none;
+}
+#p {
+  text-align: left;
+
+  font-size: 20px;
+  width: 30%;
+  margin: auto;
+  margin-top: 100px;
+}

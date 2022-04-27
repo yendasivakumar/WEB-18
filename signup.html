@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="signup.css" />
+    <link rel="stylesheet" href="common.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="nav">
+      <div><a href="login.html">Login</a></div>
+    </div>
+    <p id="p"></p>
+    <form action="" id="form">
+      <input type="text" name="" id="name" placeholder="Enter Your Full Name" />
+      <input type="email" name="" id="mail" placeholder="Enter Your Emal" />
+      <input type="password" name="" id="pass" placeholder="Choose Password" />
+      <input type="submit" name="" id="sub" />
+    </form>
+  </body>
+</html>
+
+<script>
+  document.querySelector("#form").addEventListener("submit", collectData);
+
+  var userInfo = JSON.parse(localStorage.getItem("userDetails")) || [];
+
+  function collectData() {
+    event.preventDefault();
+    data = {
+      name: form.name.value,
+      mail: form.mail.value,
+      pass: form.pass.value,
+    };
+
+    userInfo.push(data);
+
+    localStorage.setItem("userDetails", JSON.stringify(userInfo));
+
+    var p = document.querySelector("p");
+    p.textContent = "Successful ! Now You can go back and login";
+  }
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="login.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="p"></p>
+    <form action="" id="loginForm">
+      <input type="email" name="" id="email" placeholder="Enter Email" />
+      <input
+        type="password"
+        name=""
+        id="password"
+        placeholder="Enter Password"
+      />
+      <input type="submit" />
+    </form>
+  </body>
+</html>
+
+<script>
+  document.querySelector("#loginForm").addEventListener("submit", checkInfo);
+
+  function checkInfo() {
+    event.preventDefault();
+    var logInMail = loginForm.email.value;
+    var loginPass = loginForm.password.value;
+
+    var userArr = JSON.parse(localStorage.getItem("userDetails"));
+    userArr.forEach(function (element) {
+      if (element.mail == logInMail && element.pass == loginPass) {
+        var p = document.querySelector("p");
+        p.textContent = "Hello " + element.name + " ! login Successful";
+        p.style.color = "green";
+        p.style.backgroundColor = "rgba(54, 245, 54, 0.28)";
+      } else {
+        var p = document.querySelector("p");
+        p.textContent = "Wrong email or password";
+        p.style.color = "red";
+        p.style.backgroundColor = "rgba(128, 0, 0, 0.151)";
+      }
+    });
+  }
+</script>
