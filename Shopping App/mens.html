@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="mens.css" />
+    <title>Men</title>
+  </head>
+  <body>
+    <div id="container"></div>
+  </body>
+</html>
+<script>
+  var mensData = JSON.parse(localStorage.getItem("MensData"));
+  displayData(mensData);
+
+  function displayData(mensData) {
+    mensData.forEach((element) => {
+      var div = document.createElement("div");
+      var img = document.createElement("img");
+      img.setAttribute("src", element.image_url);
+
+      var ph = document.createElement("p");
+      ph.textContent = element.name;
+
+      var p = document.createElement("p");
+      p.textContent = element.price;
+
+      var strikeDiv = document.createElement("div");
+      strikeDiv.setAttribute("class", "strikeprice");
+      var strp = document.createElement("p");
+      var strS = document.createElement("s");
+      strS.textContent = element.strikedoffprice;
+
+      strp.append(strS);
+      strikeDiv.append(p);
+      strikeDiv.append(strp);
+
+      var cart = document.createElement("button");
+      cart.textContent = "Add to Cart";
+      cart.setAttribute("class", "button");
+
+      div.append(img, ph, strikeDiv, cart);
+
+      document.querySelector("#container").append(div);
+    });
+  }
+</script>
